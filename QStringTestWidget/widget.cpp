@@ -80,7 +80,7 @@ void Widget::on_pushButton_QStr_left_right_clicked()
     str2 = ui->comboBox_QStr_str2->currentText();
     ui->plainTextEdit->appendPlainText("QString str1 = " + str1);
     ui->plainTextEdit->appendPlainText("QString str2 = " + str2);
-    ui->plainTextEdit->appendPlainText("输入的数字为 ：" + N);
+    ui->plainTextEdit->appendPlainText("输入的数字为 ：" + QString::number(N));
     ui->plainTextEdit->appendPlainText("\nQString str1.left(N) = " + str1.left(N));
     ui->plainTextEdit->appendPlainText("\nQString str1.right(N) = " + str1.right(N));
     ui->plainTextEdit->appendPlainText("\nQString str2.left(N) = " + str2.left(N));
@@ -103,7 +103,7 @@ void Widget::on_pushButton_QStr_section_clicked()
     //str2 = ui->comboBox_QStr_str2->currentText();
     ui->plainTextEdit->appendPlainText("QString str1 = " + str1);
     ui->plainTextEdit->appendPlainText("QString str2 = " + str2);
-    ui->plainTextEdit->appendPlainText("输入的数字为 ：" + N);
+    ui->plainTextEdit->appendPlainText("输入的数字为 ：" + QString::number(N));
     ui->plainTextEdit->appendPlainText("\nQString str1.section(\",\",0,0) = " + str1.section(",",0,N));
     ui->plainTextEdit->appendPlainText("\nQString str1.section(\",\",0,0) = " + str1.section(",",N,N));
 
@@ -123,14 +123,14 @@ void Widget::on_pushButton_size_length_clicked()
     str2 = ui->comboBox_QStr_str2->currentText();
     ui->plainTextEdit->appendPlainText("QString str1 = " + str1);
     ui->plainTextEdit->appendPlainText("QString str2 = " + str2);
-    ui->plainTextEdit->appendPlainText("输入的数字为 ：" + N);
+    ui->plainTextEdit->appendPlainText("输入的数字为 ：" + QString::number(N));
    // ui->plainTextEdit->appendPlainText("\nQString str1.count() = " + str1.count());
-    ui->plainTextEdit->appendPlainText("\nQString str1.size() = " + str1.size());
-    ui->plainTextEdit->appendPlainText("\nQString str1.length() = " + str1.length());
+    ui->plainTextEdit->appendPlainText("\nQString str1.size() = " + QString::number(str1.size()));
+    ui->plainTextEdit->appendPlainText("\nQString str1.length() = " + QString::number(str1.length()));
 
  //   ui->plainTextEdit->appendPlainText("\nQString str2.count() = " + str2.count());
-    ui->plainTextEdit->appendPlainText("\nQString str2.size() = " + str2.size());
-    ui->plainTextEdit->appendPlainText("\nQString str2.length() = " + str2.length());
+    ui->plainTextEdit->appendPlainText("\nQString str2.size() = " + QString::number(str2.size()));
+    ui->plainTextEdit->appendPlainText("\nQString str2.length() = " + QString::number(str2.length()));
 
 }
 
@@ -145,7 +145,8 @@ void Widget::on_pushButton_QStr_resize_clicked()
     str2 = ui->comboBox_QStr_str2->currentText();
     ui->plainTextEdit->appendPlainText("QString str1 = " + str1);
     ui->plainTextEdit->appendPlainText("QString str2 = " + str2);
-    ui->plainTextEdit->appendPlainText("输入的数字为 ：" + N);
+    ui->plainTextEdit->appendPlainText("输入的数字为 ：" + QString::number(N));
+    if(N > str1.size() || N > str2.size())N = qMin(str1.size(),str2.size());
     str1.resize(N);
      ui->plainTextEdit->appendPlainText("\nQString str1.resize() = " + str1);
     str1.resize(N,'*');
@@ -168,7 +169,7 @@ void Widget::on_pushButton_QStr_fill_clicked()
     str2 = ui->comboBox_QStr_str2->currentText();
     ui->plainTextEdit->appendPlainText("QString str1 = " + str1);
     ui->plainTextEdit->appendPlainText("QString str2 = " + str2);
-    ui->plainTextEdit->appendPlainText("输入的数字为 ：" + N);
+    ui->plainTextEdit->appendPlainText("输入的数字为 ：" + QString::number(N));
     ui->plainTextEdit->appendPlainText("\nQString str1.fill() = " + str1.fill('X'));
     ui->plainTextEdit->appendPlainText("\nQString str1.fill() = " + str1.fill('*',N));
 
@@ -181,7 +182,7 @@ void Widget::on_pushButton_QStr_fill_clicked()
 void Widget::on_pushButton_QStr_indexof_clicked()
 {
     //测试indexOf()函数 && lastIndexOf()
-    ui->plainTextEdit->appendPlainText("\n ===  fill()函数测试");
+    ui->plainTextEdit->appendPlainText("\n ===  indexOf()函数 && lastIndexOf()测试");
     QString   str1,str2 = "";
     int N = ui->spinBox->value();
     str1 = ui->comboBox_QStr_str1->currentText();
@@ -189,12 +190,12 @@ void Widget::on_pushButton_QStr_indexof_clicked()
     ui->plainTextEdit->appendPlainText("QString str1 = " + str1);
     ui->plainTextEdit->appendPlainText("QString str2 = " + str2);
 
-    ui->plainTextEdit->appendPlainText("输入的数字为 ：" + N);
-    ui->plainTextEdit->appendPlainText("\nQString str1.indexOf() = " + str1.indexOf("\\"));
-    ui->plainTextEdit->appendPlainText("\nQString str1.lastIndexOf() = " + str1.lastIndexOf(str2));
+    ui->plainTextEdit->appendPlainText("输入的数字为 ：" + QString::number(N));
+    ui->plainTextEdit->appendPlainText("\nQString str1.indexOf() = " + QString::number(str1.indexOf("\\")));
+    ui->plainTextEdit->appendPlainText("\nQString str1.lastIndexOf() = " + QString::number(str1.lastIndexOf(str2)));
 
-    ui->plainTextEdit->appendPlainText("\nQString str2.indexOf() = " + str2.indexOf("N"));
-    ui->plainTextEdit->appendPlainText("\nQString str2.lastIndexOf() = " + str2.lastIndexOf("Q"));
+    ui->plainTextEdit->appendPlainText("\nQString str2.indexOf() = " + QString::number(str2.indexOf("N")));
+    ui->plainTextEdit->appendPlainText("\nQString str2.lastIndexOf() = " + QString::number(str2.lastIndexOf("Q")));
 
 }
 
@@ -220,17 +221,17 @@ void Widget::on_pushButton_QStr_contains_clicked()
 void Widget::on_pushButton_QStr_endsWith_startsWith_clicked()
 {
     //测试endsWith && startsWith函数
-    ui->plainTextEdit->appendPlainText("\n === contain()函数测试");
+    ui->plainTextEdit->appendPlainText("\n === endsWith()函数 && startsWith()测试");
     QString   str1,str2 = "";
     str1 = ui->comboBox_QStr_str1->currentText();
     str2 = ui->comboBox_QStr_str2->currentText();
     ui->plainTextEdit->appendPlainText("QString str1 = " + str1);
     ui->plainTextEdit->appendPlainText("QString str2 = " + str2);
 
-    showBoolInfo("str1.endsWith(\".cpp\")",str1.endsWith(".cpp"));
-    showBoolInfo("str1.contains(\".cpp\")",str1.startsWith(".cpp",Qt::CaseInsensitive));
-    showBoolInfo("\nstr2.contains(\"string\")",str2.endsWith("string"));
-    showBoolInfo("str2.contains(\"c:\")",str2.startsWith("c:"));
+    showBoolInfo("str1.endsWith(\".cpp\")",str1.endsWith(".cpp",Qt::CaseInsensitive));
+    showBoolInfo("str1.startsWith(\"string\")",str1.startsWith("string",Qt::CaseInsensitive));
+    showBoolInfo("\nstr2.endsWith(\"string\")",str2.endsWith("string",Qt::CaseInsensitive));
+    showBoolInfo("str2.startsWith(\"c:\")",str2.startsWith("c:",Qt::CaseInsensitive));
 
 }
 
@@ -245,14 +246,14 @@ void Widget::on_pushButton_QStr_count_clicked()
     str2 = ui->comboBox_QStr_str2->currentText();
     ui->plainTextEdit->appendPlainText("QString str1 = " + str1);
     ui->plainTextEdit->appendPlainText("QString str2 = " + str2);
-    ui->plainTextEdit->appendPlainText("输入的数字为 ：" + N);
-    ui->plainTextEdit->appendPlainText("\nQString str1.count(\"Qt\") = " + str1.count("Qt",Qt::CaseInsensitive));
-    ui->plainTextEdit->appendPlainText("\nQString str1.size() = " + str1.size());
-    ui->plainTextEdit->appendPlainText("\nQString str1.length() = " + str1.length());
+    ui->plainTextEdit->appendPlainText("输入的数字为 ：" + QString::number(N));
+    ui->plainTextEdit->appendPlainText("\nQString str1.count(\"Qt\") = " + QString::number(str1.count("Qt",Qt::CaseInsensitive)));
+    ui->plainTextEdit->appendPlainText("\nQString str1.size() = " + QString::number(str1.size()));
+    ui->plainTextEdit->appendPlainText("\nQString str1.length() = " + QString::number(str1.length()));
 
-    ui->plainTextEdit->appendPlainText("\nQString str2.count(str1) = " + str2.count("str1",Qt::CaseInsensitive));
-    ui->plainTextEdit->appendPlainText("\nQString str2.size() = " + str2.size());
-    ui->plainTextEdit->appendPlainText("\nQString str2.length() = " + str2.length());
+    ui->plainTextEdit->appendPlainText("\nQString str2.count(str1) = " + QString::number(str2.count("str1",Qt::CaseInsensitive)));
+    ui->plainTextEdit->appendPlainText("\nQString str2.size() = " + QString::number(str2.size()));
+    ui->plainTextEdit->appendPlainText("\nQString str2.length() = " + QString::number(str2.length()));
 }
 
 
@@ -268,7 +269,7 @@ void Widget::on_pushButton_QStr_trim_simplifiy_clicked()
     str2 = ui->comboBox_QStr_str2->currentText();
     ui->plainTextEdit->appendPlainText("QString str1 = " + str1);
     ui->plainTextEdit->appendPlainText("QString str2 = " + str2);
-    ui->plainTextEdit->appendPlainText("输入的数字为 ：" + N);
+    ui->plainTextEdit->appendPlainText("输入的数字为 ：" + QString::number(N));
     ui->plainTextEdit->appendPlainText("\nQString str1.trimmed() = " + str1.trimmed());
     ui->plainTextEdit->appendPlainText("\nQString str1.simplified() = " + str1.simplified());
     ui->plainTextEdit->appendPlainText("\nQString str2.trimmed() = " + str2.trimmed());
@@ -285,7 +286,7 @@ void Widget::on_pushButton_QStr_insert_clicked()
     str2 = ui->comboBox_QStr_str2->currentText();
     ui->plainTextEdit->appendPlainText("QString str1 = " + str1);
     ui->plainTextEdit->appendPlainText("QString str2 = " + str2);
-    ui->plainTextEdit->appendPlainText("输入的数字为 ：" + N);
+    ui->plainTextEdit->appendPlainText("输入的数字为 ：" + QString::number(N));
 
     ui->plainTextEdit->appendPlainText("\nQString str1.insert(N,str2) = " + str1.insert(N,str2));
     ui->plainTextEdit->appendPlainText("\nQString str2.trimmed(N,str1) = " + str2.insert(N,str1));
@@ -302,7 +303,7 @@ void Widget::on_pushButton_QStr_remove_clicked()
     str2 = ui->comboBox_QStr_str2->currentText();
     ui->plainTextEdit->appendPlainText("QString str1 = " + str1);
     ui->plainTextEdit->appendPlainText("QString str2 = " + str2);
-    ui->plainTextEdit->appendPlainText("输入的数字为 ：" + N);
+    ui->plainTextEdit->appendPlainText("输入的数字为 ：" +  QString::number(N));
 
     ui->plainTextEdit->appendPlainText("\nQString str1.remove(N,5) = " + str1.remove(N,5));
     ui->plainTextEdit->appendPlainText("\nQString str2.remove(N,5) = " + str2.remove(N,5));
@@ -321,7 +322,7 @@ void Widget::on_pushButton_QStr_replace_clicked()
     str2 = ui->comboBox_QStr_str2->currentText();
     ui->plainTextEdit->appendPlainText("QString str1 = " + str1);
     ui->plainTextEdit->appendPlainText("QString str2 = " + str2);
-    ui->plainTextEdit->appendPlainText("输入的数字为 ：" + N);
+    ui->plainTextEdit->appendPlainText("输入的数字为 ：" + QString::number(N));
 
     ui->plainTextEdit->appendPlainText("\nQString str1.replace(N,str2.size(),str2) = " + str1.replace(N,str2.size(),str2));
     ui->plainTextEdit->appendPlainText("\nQString str2.replace('a','X') = " + str2.replace('a','X'));
