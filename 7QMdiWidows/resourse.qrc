@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/ico">
+        <file>menu-ico/About.png</file>
+        <file>menu-ico/Break.png</file>
+        <file>menu-ico/Check.png</file>
+        <file>menu-ico/Close.png</file>
+        <file>menu-ico/Copy.png</file>
+        <file>menu-ico/Cut.png</file>
+        <file>menu-ico/New.png</file>
+        <file>menu-ico/Open.png</file>
+        <file>menu-ico/Paste.png</file>
+        <file>menu-ico/Pink drop.png</file>
+        <file>menu-ico/Save.png</file>
+    </qresource>
+</RCC>
