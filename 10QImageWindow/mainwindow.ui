@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>616</width>
+    <height>605</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout_10">
+    <item>
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <widget class="QGroupBox" name="groupBox_ImageProper">
+       <property name="title">
+        <string>图像属性</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>图像格式</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEdit_ImageFormat"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>图像宽度</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEdit_ImageWidth"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>图像高度</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEdit_ImageHeight"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>图像深度</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEdit_ImageDepth"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>位平面数</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEdit_ImageBitCnt"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_6">
+          <item>
+           <widget class="QLabel" name="label_6">
+            <property name="text">
+             <string>图像大小</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEdit_ImageSize"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_7">
+          <item>
+           <widget class="QLabel" name="label_7">
+            <property name="text">
+             <string>DPI分辨率</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEdit_ImageDpi"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_8">
+          <item>
+           <widget class="QCheckBox" name="checkBox_IsGray">
+            <property name="text">
+             <string>灰度图</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkBox_IsAlpha">
+            <property name="text">
+             <string>具有Alpha通道</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QGroupBox" name="groupBox_ImageTransform">
+       <property name="title">
+        <string>图像格式转换</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QComboBox" name="comboBox">
+          <item>
+           <property name="text">
+            <string>RGB888</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>RGB16</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>RGBx888</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>RGB32</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Grayscale8</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>GrayScale16</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Indexed8</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_ImageFormTrans">
+          <property name="text">
+           <string>图像格式转换</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QGroupBox" name="groupBox_Rgb565">
+       <property name="title">
+        <string>RGB565数据</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_9">
+          <item>
+           <widget class="QRadioButton" name="radioButton_LowBitForward">
+            <property name="text">
+             <string>低字节在前</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_HighBitForward">
+            <property name="text">
+             <string>高字节在前</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_GenRgb565">
+          <property name="text">
+           <string>生成RGB565数据</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_SaveDateFile">
+          <property name="text">
+           <string>保存数据文件</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Tab 1</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <widget class="QLabel" name="label_picture">
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Tab 2</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QPlainTextEdit" name="plainTextEdit"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>616</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action_open"/>
+   <addaction name="action_FileReload"/>
+   <addaction name="action_save"/>
+   <addaction name="action_File_SaveAs"/>
+   <addaction name="action_Preview"/>
+   <addaction name="action_Print"/>
+   <addaction name="separator"/>
+   <addaction name="action_ZoomIn"/>
+   <addaction name="action_ZoomOut"/>
+   <addaction name="action_RotateLeft"/>
+   <addaction name="action_RotateRight"/>
+   <addaction name="action_FlipUD"/>
+   <addaction name="action_FlipLR"/>
+   <addaction name="separator"/>
+   <addaction name="action_quit"/>
+  </widget>
+  <action name="action_open">
+   <property name="text">
+    <string>打开</string>
+   </property>
+   <property name="toolTip">
+    <string>打开图片</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="action_quit">
+   <property name="text">
+    <string>退出</string>
+   </property>
+   <property name="toolTip">
+    <string>退出本系统</string>
+   </property>
+  </action>
+  <action name="action_save">
+   <property name="text">
+    <string>保存</string>
+   </property>
+   <property name="toolTip">
+    <string>保存到当前文件</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="action_RotateLeft">
+   <property name="text">
+    <string>左旋</string>
+   </property>
+   <property name="toolTip">
+    <string>逆时针旋转90‘’</string>
+   </property>
+  </action>
+  <action name="action_RotateRight">
+   <property name="text">
+    <string>右旋</string>
+   </property>
+   <property name="toolTip">
+    <string>顺时针旋转90‘’</string>
+   </property>
+  </action>
+  <action name="action_FlipUD">
+   <property name="text">
+    <string>上下翻转</string>
+   </property>
+   <property name="toolTip">
+    <string>上下翻转</string>
+   </property>
+  </action>
+  <action name="action_FlipLR">
+   <property name="text">
+    <string>左右翻转</string>
+   </property>
+   <property name="toolTip">
+    <string>左右翻转</string>
+   </property>
+  </action>
+  <action name="action_FileReload">
+   <property name="text">
+    <string>重新载入</string>
+   </property>
+   <property name="toolTip">
+    <string>重新载入图片</string>
+   </property>
+  </action>
+  <action name="action_File_SaveAs">
+   <property name="text">
+    <string>另存</string>
+   </property>
+   <property name="toolTip">
+    <string>另存图片文件</string>
+   </property>
+  </action>
+  <action name="action_Preview">
+   <property name="text">
+    <string>打印预览</string>
+   </property>
+   <property name="toolTip">
+    <string>打印预览</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
+  </action>
+  <action name="action_Print">
+   <property name="text">
+    <string>打印</string>
+   </property>
+   <property name="toolTip">
+    <string>打印图片</string>
+   </property>
+  </action>
+  <action name="action_ZoomIn">
+   <property name="text">
+    <string>放大</string>
+   </property>
+   <property name="toolTip">
+    <string>放大图片</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Up</string>
+   </property>
+  </action>
+  <action name="action_ZoomOut">
+   <property name="text">
+    <string>缩小</string>
+   </property>
+   <property name="toolTip">
+    <string>缩小图片</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Down</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>action_quit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>307</x>
+     <y>302</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
