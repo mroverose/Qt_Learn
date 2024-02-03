@@ -10,6 +10,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->listWidget->setDragEnabled(true);                   //允许拖放操作
     ui->listWidget->setDragDropMode(QAbstractItemView::InternalMove);       //列表项可在组件内部被拖放
 
+    ui->pushButton_play->setEnabled(false);
+    ui->pushButton_nextItem->setEnabled(false);
+    ui->pushButton_preItem->setEnabled(false);
+
     player =  new QMediaPlayer(this);
     QAudioOutput *audioOutput = new QAudioOutput(this); //音频输出，指向默认的音频输出设备
     player->setAudioOutput(audioOutput);
@@ -17,6 +21,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(player,&QMediaPlayer::durationChanged,this,&MainWindow::do_durationChanged);
     connect(player,&QMediaPlayer::sourceChanged,this,&MainWindow::do_sourceChanged);
     connect(player,&QMediaPlayer::metaDataChanged,this,&MainWindow::do_metaDataChanged);
+    connect(player,&QMediaPlayer::playbackStateChanged,this,&MainWindow::do_stateChanged);
 }
 
 bool  MainWindow::eventFilter(QObject *watched, QEvent *event){
@@ -61,6 +66,9 @@ void MainWindow::on_pushButton_addItem_clicked()
         player->setSource(source);                                          //设置播放媒介
     }
     player->play();
+    ui->pushButton_play->setEnabled(true);
+    ui->pushButton_nextItem->setEnabled(true);
+    ui->pushButton_preItem->setEnabled(true);
 }
 
 QUrl MainWindow::getUrlFromItem(QListWidgetItem *item){
@@ -87,6 +95,9 @@ void MainWindow::on_pushButton_clearList_clicked()
     loopPlay = false;           //防止do_stateChanged()里切换曲目
     ui->listWidget->clear();
     player->stop();
+    ui->pushButton_play->setEnabled(false);
+    ui->pushButton_nextItem->setEnabled(false);
+    ui->pushButton_preItem->setEnabled(false);
 }
 
 
@@ -151,7 +162,6 @@ void MainWindow::do_metaDataChanged(){
         ui->label_picture->clear();
 }
 
-
 void MainWindow::do_durationChanged(qint64 duration){
     //播放源时长发生变化时运行，更新进度显示
     ui->horizontalSlider_playTimeLine->setMaximum(duration);
@@ -166,7 +176,7 @@ void MainWindow::do_positionChanged(qint64 position){
     //播放位置发生变化时运行，更新进度显示
     if(ui->horizontalSlider_playTimeLine->isSliderDown())
         return;                         //滑条正在被鼠标拖动
-    ui->horizontalSlider_playTimeLine->setSliderPosition(position);
+    ui->horizontalSlider_playTimeLine->setSliderPosition(static_cast<int>(position));
     int secs = position / 1000;
     int mins = secs / 60;
     secs = secs % 60;
@@ -196,9 +206,15 @@ void MainWindow::on_pushButton_play_clicked()
     //开始播放
     if(ui->listWidget->currentRow() < 0)
         ui->listWidget->setCurrentRow(0);       //没有选择曲目则播放第一个
-    player->setSource(getUrlFromItem(ui->listWidget->currentItem()));
-    loopPlay = ui->pushButton_recyclePlay->isChecked();
-    player->play();
+    if(player->position() > 0){
+        player->play();
+    }
+    else{
+          player->setSource(getUrlFromItem(ui->listWidget->currentItem()));
+          loopPlay = ui->pushButton_recyclePlay->isChecked();
+          player->setPosition(player->position());
+          player->play();
+    }
 }
 
 
@@ -235,7 +251,9 @@ void MainWindow::on_pushButton_recyclePlay_clicked(bool checked)
 void MainWindow::on_horizontalSlider_playTimeLine_valueChanged(int value)
 {
     //播放进度控制
-    player->setPosition(value);
+    if(ui->horizontalSlider_playTimeLine->isSliderDown())   //滑条正在被鼠标拖动
+          player->setPosition(value);
+    else return;
 }
 
 
@@ -244,7 +262,7 @@ void MainWindow::on_pushButton_mutex_clicked()
     //静音控制
     bool mute = player->audioOutput()->isMuted();
     player->audioOutput()->setMuted(!mute);
-    if(mute)
+    if(!mute)
         ui->pushButton_mutex->setIcon(QIcon(":/icons/mute.ico"));
     else
         ui->pushButton_mutex->setIcon(QIcon(":/icons/volumn.ico"));

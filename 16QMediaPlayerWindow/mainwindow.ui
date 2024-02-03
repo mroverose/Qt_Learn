@@ -143,14 +143,20 @@
       </item>
       <item>
        <widget class="QDoubleSpinBox" name="doubleSpinBox">
+        <property name="decimals">
+         <number>2</number>
+        </property>
         <property name="minimum">
-         <double>1.000000000000000</double>
+         <double>0.000000000000000</double>
         </property>
         <property name="maximum">
-         <double>6.000000000000000</double>
+         <double>3.000000000000000</double>
         </property>
         <property name="singleStep">
-         <double>0.050000000000000</double>
+         <double>0.100000000000000</double>
+        </property>
+        <property name="value">
+         <double>1.000000000000000</double>
         </property>
        </widget>
       </item>
@@ -165,6 +171,15 @@
         </property>
         <property name="checkable">
          <bool>true</bool>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+        <property name="autoDefault">
+         <bool>false</bool>
+        </property>
+        <property name="default">
+         <bool>false</bool>
         </property>
         <property name="flat">
          <bool>false</bool>
@@ -205,6 +220,9 @@
       </item>
       <item>
        <widget class="QSlider" name="horizontalSlider_playTimeLine">
+        <property name="singleStep">
+         <number>0</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>

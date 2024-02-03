@@ -179,9 +179,11 @@ public:
 
         doubleSpinBox = new QDoubleSpinBox(centralwidget);
         doubleSpinBox->setObjectName("doubleSpinBox");
-        doubleSpinBox->setMinimum(1.000000000000000);
-        doubleSpinBox->setMaximum(6.000000000000000);
-        doubleSpinBox->setSingleStep(0.050000000000000);
+        doubleSpinBox->setDecimals(2);
+        doubleSpinBox->setMinimum(0.000000000000000);
+        doubleSpinBox->setMaximum(3.000000000000000);
+        doubleSpinBox->setSingleStep(0.100000000000000);
+        doubleSpinBox->setValue(1.000000000000000);
 
         horizontalLayout->addWidget(doubleSpinBox);
 
@@ -191,6 +193,8 @@ public:
         icon5.addFile(QString::fromUtf8(":/icons/next(1).ico"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton_recyclePlay->setIcon(icon5);
         pushButton_recyclePlay->setCheckable(true);
+        pushButton_recyclePlay->setChecked(false);
+        pushButton_recyclePlay->setAutoDefault(false);
         pushButton_recyclePlay->setFlat(false);
 
         horizontalLayout->addWidget(pushButton_recyclePlay);
@@ -222,6 +226,7 @@ public:
 
         horizontalSlider_playTimeLine = new QSlider(centralwidget);
         horizontalSlider_playTimeLine->setObjectName("horizontalSlider_playTimeLine");
+        horizontalSlider_playTimeLine->setSingleStep(0);
         horizontalSlider_playTimeLine->setOrientation(Qt::Horizontal);
 
         horizontalLayout_2->addWidget(horizontalSlider_playTimeLine);
@@ -247,6 +252,9 @@ public:
         MainWindow->setStatusBar(statusbar);
 
         retranslateUi(MainWindow);
+
+        pushButton_recyclePlay->setDefault(false);
+
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
